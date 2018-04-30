@@ -27,7 +27,7 @@ public class AddPageTest {
 	@Test
 	public void testAddAccountThroughUI() throws InterruptedException {
 		
-		driver.get("localhost:8080/accountapp/addaccountpage.html");
+		driver.get("http://127.0.0.1:8080/accountapp/addaccountpage.html");
 		
 		Thread.sleep(10000);
 		
@@ -45,12 +45,11 @@ public class AddPageTest {
 		
 		Thread.sleep(2000);
 		
-		WebElement receipt = driver.findElement(By.id("accounts"));
-		receipt.getText();
+		String actual = driver.switchTo().alert().getText();	
 		
-		String expected = ("ID: 1 firstname: TOm lastname: Owen accountnumber: 1234");
+		String expected = "Account Successfully Added";
 		
-		assertEquals(receipt, expected);
+		assertEquals(expected, actual);
 	}
 	
 	@After

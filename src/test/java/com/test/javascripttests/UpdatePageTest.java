@@ -25,9 +25,12 @@ public class UpdatePageTest {
 	@Test
 	public void testUpdatePageUI() throws InterruptedException {
 		
-		driver.get("localhost:8080/accountapp/updateaccountpage.html");
+		driver.get("http://127.0.0.1:8080/accountapp/updateaccountpage.html");
 			
 		Thread.sleep(10000);
+		
+		WebElement id =driver.findElement(By.id("accid"));
+		id.sendKeys("1");
 		
 		WebElement firstName = driver.findElement(By.id("fname"));
 		firstName.sendKeys("Bill");

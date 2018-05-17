@@ -83,17 +83,15 @@ Delete_Account()
 	
 	lr_start_transaction("Delete");
 
-	lr_param_sprintf("body", "\"ID\":\"%d\",\"firstName\":\"Tom\",\"lastName\":\"Owen\",\"accountNumber\":\"1235\"",{ID_Number});
-	
 	web_custom_request("1", 
-		"URL=http://localhost:8080/accountapp/api/accounts/json/1", 
+		"URL=http://localhost:8080/accountapp/api/accounts/json/{ID_Number}", 
 		"Method=DELETE", 
 		"Resource=0", 
 		"RecContentType=application/json", 
 		"Referer=http://localhost:8080/accountapp/updateaccountpage.html", 
 		"Snapshot=t22.inf", 
 		"Mode=HTML", 
-		"Body={"body"},
+		"Body={\"ID\":\"1\",\"firstName\":\"Tom\",\"lastName\":\"Owen\",\"accountNumber\":\"1235\"}",
 		LAST);
 	
 	lr_end_transaction("Delete", LR_AUTO);
